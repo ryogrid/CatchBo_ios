@@ -9,9 +9,12 @@
 import UIKit
 import MultipeerConnectivity
 import AVFoundation
+import CoreMotion
 
 class ViewController: UIViewController, MCBrowserViewControllerDelegate,
 MCSessionDelegate, AVAudioPlayerDelegate {
+    
+    @IBOutlet weak var debugLabel: UILabel!
     
     let serviceType = "LCOC-Chat"
     
@@ -22,8 +25,14 @@ MCSessionDelegate, AVAudioPlayerDelegate {
     var audioPlayer: AVAudioPlayer!
     var audioPlayer2: AVAudioPlayer!
     
-    @IBOutlet var chatView: UITextView!
-    @IBOutlet var messageField: UITextField!
+    var currentOrientationValuesZ : Double = 0
+    var currentAccelerationValuesZ : Double = 0
+    
+    var manager = CMMotionManager()
+    var waitCounter = 0
+    
+    //    @IBOutlet var chatView: UITextView!
+//    @IBOutlet var messageField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +62,28 @@ MCSessionDelegate, AVAudioPlayerDelegate {
         audioPlayer2 = AVAudioPlayer(contentsOfURL: sound_data2, error: nil)
         audioPlayer2.delegate = self
         audioPlayer2.prepareToPlay()
+        
+
+        //取得の間隔
+        manager.accelerometerUpdateInterval = 0.1;
+        let handler:CMAccelerometerHandler = {(data:CMAccelerometerData!, error:NSError!) -> Void in
+            self.currentOrientationValuesZ = data.acceleration.z * 0.1 + self.currentOrientationValuesZ * 0.9
+            self.currentAccelerationValuesZ = data.acceleration.z - self.currentOrientationValuesZ
+    
+ //           self.debugLabel.text = self.currentAccelerationValuesZ.description
+            if self.currentAccelerationValuesZ > 0.5 && self.waitCounter > 10 {
+                self.sendChat()
+                self.waitCounter = 0
+            }
+            self.waitCounter++
+        }
+        
+        //取得開始
+        manager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:handler)
     }
     
-    @IBAction func sendChat(sender: UIButton) {
+//    @IBAction func sendChat(sender: UIButton) {
+    func sendChat() {
         // Bundle up the text in the message field, and send it off to all
         // connected peers
         audioPlayer.play()
@@ -75,9 +103,9 @@ MCSessionDelegate, AVAudioPlayerDelegate {
             print("Error sending data: \(error?.localizedDescription)")
         }
         
-        self.updateChat(self.messageField.text, fromPeer: self.peerID)
+//        self.updateChat(self.messageField.text, fromPeer: self.peerID)
         
-        self.messageField.text = ""
+//        self.messageField.text = ""
         
         NSThread.sleepForTimeInterval(between)
         
@@ -100,8 +128,8 @@ MCSessionDelegate, AVAudioPlayerDelegate {
         }
         
         // Add the name to the message and display it
-        let message = "\(name): \(text)\n"
-        self.chatView.text = self.chatView.text + message
+//        let message = "\(name): \(text)\n"
+//        self.chatView.text = self.chatView.text + message
         
     }
     
