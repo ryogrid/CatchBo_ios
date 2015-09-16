@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A106C611BA887A70053F15E /* catch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A106C601BA887A70053F15E /* catch.mp3 */; };
+		2A106C631BA887B30053F15E /* throw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A106C621BA887B30053F15E /* throw.mp3 */; };
 		2A98D2B61BA715BC007B9B3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98D2B51BA715BC007B9B3B /* AppDelegate.swift */; };
 		2A98D2B81BA715BC007B9B3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98D2B71BA715BC007B9B3B /* ViewController.swift */; };
 		2A98D2BB1BA715BC007B9B3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A98D2B91BA715BC007B9B3B /* Main.storyboard */; };
 		2A98D2BD1BA715BC007B9B3B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A98D2BC1BA715BC007B9B3B /* Images.xcassets */; };
 		2A98D2C01BA715BC007B9B3B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A98D2BE1BA715BC007B9B3B /* LaunchScreen.xib */; };
 		2A98D2CC1BA715BC007B9B3B /* DCatchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A98D2CB1BA715BC007B9B3B /* DCatchTests.swift */; };
+		2A98D2D61BA7160B007B9B3B /* MultipeerConnectivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A98D2D51BA7160B007B9B3B /* MultipeerConnectivity.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A106C601BA887A70053F15E /* catch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = catch.mp3; sourceTree = "<group>"; };
+		2A106C621BA887B30053F15E /* throw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = throw.mp3; sourceTree = "<group>"; };
 		2A98D2B01BA715BC007B9B3B /* DCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A98D2B41BA715BC007B9B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A98D2B51BA715BC007B9B3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		2A98D2C51BA715BC007B9B3B /* DCatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DCatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A98D2CA1BA715BC007B9B3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A98D2CB1BA715BC007B9B3B /* DCatchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCatchTests.swift; sourceTree = "<group>"; };
+		2A98D2D51BA7160B007B9B3B /* MultipeerConnectivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultipeerConnectivity.framework; path = System/Library/Frameworks/MultipeerConnectivity.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A98D2D61BA7160B007B9B3B /* MultipeerConnectivity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +66,9 @@
 		2A98D2A71BA715BC007B9B3B = {
 			isa = PBXGroup;
 			children = (
+				2A106C621BA887B30053F15E /* throw.mp3 */,
+				2A106C601BA887A70053F15E /* catch.mp3 */,
+				2A98D2D51BA7160B007B9B3B /* MultipeerConnectivity.framework */,
 				2A98D2B21BA715BC007B9B3B /* DCatch */,
 				2A98D2C81BA715BC007B9B3B /* DCatchTests */,
 				2A98D2B11BA715BC007B9B3B /* Products */,
@@ -194,6 +204,8 @@
 			files = (
 				2A98D2BB1BA715BC007B9B3B /* Main.storyboard in Resources */,
 				2A98D2C01BA715BC007B9B3B /* LaunchScreen.xib in Resources */,
+				2A106C611BA887A70053F15E /* catch.mp3 in Resources */,
+				2A106C631BA887B30053F15E /* throw.mp3 in Resources */,
 				2A98D2BD1BA715BC007B9B3B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +353,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DCatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -351,8 +366,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = DCatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -409,6 +426,7 @@
 				2A98D2D11BA715BC007B9B3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A98D2D21BA715BC007B9B3B /* Build configuration list for PBXNativeTarget "DCatchTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +435,7 @@
 				2A98D2D41BA715BC007B9B3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
